@@ -13,9 +13,9 @@ mongoClient.connect().then(() => {
 
 export async function validateUser(req, res, next){
     const { authorization } = req.headers;
-    const token = authorization?.replace("Bearer ", "")
+    const token = authorization?.replace("Bearer ", "");
     
-    const sessionInfo = await db.collection('sessions').findOne({token})
+    const sessionInfo = await db.collection('sessions').findOne({token});
 
     if(!sessionInfo){
         return res.sendStatus(401);
