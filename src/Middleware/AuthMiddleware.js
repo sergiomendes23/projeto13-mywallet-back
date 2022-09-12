@@ -12,7 +12,6 @@ mongoClient.connect().then(() => {
 });
 
 export async function validateUser(req, res, next){
-    const income = req.body;
     const { authorization } = req.headers;
     const token = authorization?.replace("Bearer ", "")
     
@@ -22,7 +21,7 @@ export async function validateUser(req, res, next){
         return res.sendStatus(401);
     }
 
-    res.locals.userId = ObjectId(sessionInfo.userId);
+    res.locals.userId = sessionInfo.userId;
 
     next()
 }

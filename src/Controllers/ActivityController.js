@@ -24,8 +24,9 @@ export async function income(req, res){
         description: joi.string().required()
     })
 
-    const { error } = incomeSchema.validate(income)
+    const { error } = incomeSchema.validate(req.body)
     if (error){
+        console.log(req.body)
         res.sendStatus(401)
         return
     }
@@ -57,7 +58,7 @@ export async function outcome(req, res){
         description: joi.string().required()
     })
 
-    const { error } = outcomeSchema.validate(income)
+    const { error } = outcomeSchema.validate(req.body)
     if (error){
         res.sendStatus(401)
         return
